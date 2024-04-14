@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Notifications page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    #markAllDone {
+      cursor: pointer;
+    }
+
+    #markAllDone:hover {
+      color: hsl(219, 85%, 26%);
+    }
+    .groupName{
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .groupName:hover{
+      color: hsl(219, 85%, 26%);
+    }
+
+    .userName:hover{
+      cursor: pointer;
+      color: hsl(219, 85%, 26%);
+    }
+
+    .fullMsg{
+      cursor: pointer;
+      border: 1px solid hsl(211, 68%, 94%);
+      padding: 5px;
+    }
+
+    .fullMsg:hover {
+      background-color:  hsl(211, 68%, 94%);
+    }
+
+    .newMsgBGcolor{
+      background-color: hsl(210, 60%, 98%);
+    }
+
+    #toastPlacement{
+      left: 30%;
+    }
+
+    .toast{
+      max-width: 700px !important;
+    }
+
+    @media screen and (max-width:786px) {
+      #toastPlacement{
+        left: 10%;
+      }      
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    const data = [
+      {
+        img: "./assets/images/avatar-mark-webber.webp",
+        name: "Mark Webber",
+        activityMsg: "reacted to your recent post",
+        group: "My first tournament today!",
+        fullMsg: "",
+        time: "1m ago",
+        read: false,
+      },
+      {
+        img: "./assets/images/avatar-angela-gray.webp",
+        name: "Angela Gray",
+        activityMsg: "followed you",
+        group: "",
+        fullMsg: "",
+        time: "5m ago",
+        read: false,
+      },
+      {
+        img: "./assets/images/avatar-jacob-thompson.webp",
+        name: "Jacob Thompson",
+        activityMsg: "has joined your group",
+        group: "Chess Club",
+        fullMsg: "",
+        time: "1m ago",
+        read: false,
+      },
+      {
+        img: "./assets/images/avatar-rizky-hasanuddin.webp",
+        name: "Rizky Hasanuddin",
+        activityMsg: "sent you a private message",
+        group: "",
+        fullMsg: "Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
+        time: "5 days ago",
+        read: true,
+      },
+      {
+        img: "./assets/images/avatar-kimberly-smith.webp",
+        name: "Kimberly Smith",
+        activityMsg: "commented on your picture",
+        group: "",
+        postImg:'./assets/images/image-chess.webp',
+        fullMsg: "",
+        time: "1 week ago",
+        read: true,
+      },
+      {
+        img: "./assets/images/avatar-nathan-peterson.webp",
+        name: "Nathan Peterson",
+        activityMsg: "reacted to your recent post",
+        group: "5 end-game strategies to increase your win rate",
+        fullMsg: "",
+        time: "2 week ago",
+        read: true,
+      },
+      {
+        img: "./assets/images/avatar-anna-kim.webp",
+        name: "Anna Kim",
+        activityMsg: "left the group",
+        group: "Chess Club",
+        fullMsg: "",
+        time: "2 week ago",
+        read: true,
+      }
+
+    ]
+  </script>
+
+</head>
+
+<body>
+
+
+  <main class="d-flex justify-content-center flex-column ">
+    <div aria-live="polite" aria-atomic="true" class="bg-body-secondary position-relative bd-example-toasts rounded-3">
+      <div class="toast-container p-3" id="toastPlacement">
+        <div class="toast">
+
+
+          <div class="toast-header">
+          </div>
+          <div class="toast-main-body">
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <marquee>
+    <div class="d-flex">
+      <div class="attribution mx-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/mohd-azgar-ali">Mohd Azgar Ali</a>.
+      </div>
+      <div class="attribution mx-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/mohd-azgar-ali">Mohd Azgar Ali</a>.
+      </div>
+      <div class="attribution mx-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/mohd-azgar-ali">Mohd Azgar Ali</a>.
+      </div>
+      <div class="attribution mx-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/mohd-azgar-ali">Mohd Azgar Ali</a>.
+      </div>
+      <div class="attribution mx-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/mohd-azgar-ali">Mohd Azgar Ali</a>.
+      </div>
+      <div class="attribution mx-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/mohd-azgar-ali">Mohd Azgar Ali</a>.
+      </div>
+      <div class="attribution mx-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/mohd-azgar-ali">Mohd Azgar Ali</a>.
+      </div>
+    </div>
+  </marquee>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script>
+
+    $(function () {
+      $(".toast").show()
+
+      let newMsgsCount = 0;
+
+      function countNewMsgs() {
+        data.forEach((ele) => {
+          if (ele.read == false) {
+            newMsgsCount = newMsgsCount + 1;
+          }
+        })
+      }
+
+      countNewMsgs()
+
+
+      //below code is related to Header section of Notification bar.
+
+      const toastHeader = $('.toast-header')
+      const toastHead = $('<p></p>');
+      toastHead.css({ "font-size": "smaller", 'background-color': 'hsl(219, 85%, 26%)', 'color': '#fff' });
+      toastHead.addClass("px-2 mx-1 rounded")
+      toastHead.text(newMsgsCount)
+
+      const spanTag = $('<span></span>').append(toastHead);
+      const pTagNotification = $('<p>Notifications</p>');
+      const strongTag = $('<strong></strong>')
+      strongTag.addClass('me-auto d-flex')
+
+      strongTag.append(pTagNotification, spanTag);
+
+      const markAllTag = $('<p></p>').text('Mark all as read');
+      markAllTag.attr('id', 'markAllDone')
+
+      toastHeader.append(strongTag, markAllTag);
+
+      //Clicking mark ALl as read will make all true as read and count will be 0 new notification left
+
+
+
+
+      const toastMainBody = $('.toast-main-body')
+
+
+      function newNotif(data) {
+        const newNotiDiv = $('<div></div>');
+        newNotiDiv.addClass('toast-body m-2 d-flex');
+
+        const imgDiv = $('<div></div>')
+        imgDiv.html(`<img src=${data.img} class="rounded-circle me-2" alt=${data.name} style="width: 35px;">`);
+
+
+        let secondPTag = ''; // Empty string by default
+
+        if (!data.read) {
+          secondPTag = `<p style="background-color: hsl(1, 90%, 64%); min-width: 7px; max-width:7px; min-height:7px; max-height: 7px; margin: 8px;" class="rounded-circle"></p>`;
+          newNotiDiv.addClass('newMsgBGcolor')
+        }else{
+          newNotiDiv.removeClass('newMsgBGcolor')
+        }
+
+        let fullMsgSec ='';
+        if(data.fullMsg){
+          fullMsgSec = `<p class="fullMsg">${data.fullMsg}</p>`
+        }
+        const newNotiDiv2 = $('<div></div>');
+        newNotiDiv2.html(`<div class="d-flex">
+                <p class="mb-0"><strong class="userName">${data.name} </strong>${data.activityMsg} <span class="groupName"> ${data.group}</span></p>
+                ${secondPTag}
+                </p>
+              </div>
+              <small style="color:hsl(219, 14%, 63%)">${data.time}</small>
+              ${fullMsgSec}
+              `)
+        
+        let postImg = '';
+
+        if(data.postImg){
+          postImg=`<img src=${data.postImg} class="rounded me-2" alt=${data.name} style="width: 35px; cursor:pointer">`
+        }
+
+        const postImgDiv = $('<div></div>');
+        postImgDiv.html(postImg);
+
+        newNotiDiv.append(imgDiv, newNotiDiv2, postImgDiv);
+        toastMainBody.append(newNotiDiv)
+      }
+
+      function loadAllNoti(data){
+        data.forEach((ele)=>{
+        newNotif(ele)
+      })
+      }
+
+      loadAllNoti(data);
+
+      $('#markAllDone').click(function () {
+        data.forEach((ele) => {
+          ele.read = true;
+        })
+        countNewMsgs();
+        newMsgsCount = 0;
+        toastHead.text(newMsgsCount)
+        toastMainBody.html('')
+        loadAllNoti(data)
+      })
+
+
+    })
+
+
+  </script>
+</body>
+
+</html>
